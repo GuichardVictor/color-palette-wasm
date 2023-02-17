@@ -1,13 +1,16 @@
 [package]
 name = "color-palette-wasm"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Victor Guichard <guichardvictor@gmail.com>"]
+description = "High-performance and smart image color palette extraction"
+license = "Apache-2.0"
+repository = "https://github.com/GuichardVictor/color-palette-wasm"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 js-sys = "0.3.61"
@@ -15,3 +18,6 @@ wasm-bindgen = "0.2.84"
 
 [dev-dependencies]
 image = "0.24.5"
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-O3", "--enable-mutable-globals"]
